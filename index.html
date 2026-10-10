@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>توتي فيش | Toty Fish - أسماك ومأكولات بحرية في سوهاج</title>
+  <meta name="description" content="مطعم توتي فيش لأسماك والمأكولات البحرية في سوهاج. مشويات، مقليات، سي فود، شوربات، وجبات، وأطباق بحرية طازجة." />
+  <meta name="theme-color" content="#05303c" />
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("toty-theme");
+        if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f6fbfd;
+      --surface: #ffffff;
+      --surface-2: #eaf6fa;
+      --header-bg: rgba(255, 255, 255, 0.9);
+      --ink: #123642;
+      --muted: #5c7280;
+      --deep: #05303c;
+      --border: #e2f0f5;
+      --brand: #066e84;
+      --brand-2: #0891b2;
+      --cyan: #22c1dd;
+      --gold: #ffb703;
+      --whatsapp: #25d366;
+      --shadow: 0 18px 40px rgba(5, 50, 64, 0.08);
+      --card-icon-bg: linear-gradient(135deg, #e7f9fd, #d2f3fa);
+      --menu-thumb: linear-gradient(135deg, #ecfbff, #d8f5fd);
+      --radius: 24px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a1118;
+      --surface: #101a24;
+      --surface-2: #17242f;
+      --header-bg: rgba(10, 17, 24, 0.88);
+      --ink: #e8f4fa;
+      --muted: #9db2c0;
+      --deep: #f2fbff;
+      --border: #1e2f3d;
+      --brand: #2cc4e0;
+      --brand-2: #22d3ee;
+      --cyan: #67e8f9;
+      --gold: #ffc93c;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --card-icon-bg: linear-gradient(135deg, #12303c, #0d3a48);
+      --menu-thumb: linear-gradient(135deg, #0e2a35, #123c4b);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background 0.35s, color 0.35s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    img, svg { max-width: 100%; display: block; }
+
+    .container { width: min(1140px, 92%); margin-inline: auto; }
+
+    .topbar {
+      background: linear-gradient(90deg, #04272f, #066e84);
+      color: #dff8ff;
+      text-align: center;
+      padding: 9px 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    header.scrolled { box-shadow: 0 10px 30px rgba(4, 47, 58, 0.12); }
+
+    .nav-wrap { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 15px 0; }
+
+    .brand { font-size: 1.45rem; font-weight: 900; color: var(--deep); display: flex; align-items: center; gap: 10px; }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--cyan));
+      font-size: 1.35rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 22px rgba(8, 145, 178, 0.25);
+    }
+
+    .nav { display: flex; gap: 24px; align-items: center; }
+    .nav a { color: var(--ink); font-weight: 800; position: relative; }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -6px;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 999px;
+      transition: 0.3s;
+    }
+
+    .nav a:hover::after { width: 100%; }
+
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+
+    .header-call { background: var(--surface-2); color: var(--brand); padding: 10px 14px; border-radius: 12px; font-weight: 900; }
+
+    .theme-toggle {
+      position: relative;
+      width: 72px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      transition: 0.3s;
+      flex: 0 0 auto;
+    }
+
+    .toggle-icon { position: absolute; top: 50%; transform: translateY(-50%); font-size: 15px; line-height: 1; }
+    .toggle-icon.sun { inset-inline-start: 8px; }
+    .toggle-icon.moon { inset-inline-end: 8px; }
+
+    .toggle-knob {
+      position: absolute;
+      top: 3px;
+      inset-inline-start: 3px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--cyan));
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      transition: transform 0.35s ease;
+    }
+
+    [data-theme="dark"] .toggle-knob { transform: translateX(-38px); }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--deep);
+      font-size: 1.4rem;
+    }
+
+    .hero {
+      position: relative;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at top left, rgba(34, 193, 221, 0.22), transparent 28%),
+        linear-gradient(135deg, #03252d 0%, #055467 48%, #0aa3c0 100%);
+      padding: 88px 0 120px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.13), transparent 18%),
+        radial-gradient(circle at 15% 75%, rgba(255, 255, 255, 0.08), transparent 20%);
+      pointer-events: none;
+    }
+
+    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: center; }
+
+    .chip {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.08;
+      margin-bottom: 10px;
+      text-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .h1-emoji { font-size: 0.85em; transform: translateY(4px); }
+
+    .slogan { color: var(--gold); font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 900; margin-bottom: 16px; }
+
+    .lead { color: #eafcff; max-width: 650px; font-size: 1.08rem; line-height: 1.95; margin-bottom: 26px; }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 22px; border-radius: 16px; font-weight: 900; border: 0; transition: 0.3s; }
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-gold { background: linear-gradient(135deg, #ffc300, #ffb703); color: #231a00; box-shadow: 0 16px 30px rgba(255, 183, 3, 0.22); }
+    .btn-whatsapp { background: linear-gradient(135deg, #2fe07c, #25d366); color: #ffffff; box-shadow: 0 16px 30px rgba(37, 211, 102, 0.22); }
+    .btn-ghost { border: 2px solid rgba(255, 255, 255, 0.45); color: #ffffff; }
+    .btn-line { border: 2px solid var(--brand); color: var(--brand); }
+
+    .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(90px, 1fr)); gap: 12px; max-width: 600px; }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      padding: 16px 12px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .stat strong { display: block; font-size: 1.4rem; color: #fff; margin-bottom: 4px; }
+    .stat span { color: #d9f8ff; font-size: 0.95rem; font-weight: 700; }
+
+    .hero-visual { position: relative; min-height: 460px; }
+
+    .plate {
+      width: min(380px, 84%);
+      aspect-ratio: 1 / 1;
+      margin-inline: auto;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+      animation: float 4s ease-in-out infinite;
+      backdrop-filter: blur(10px);
+    }
+
+    .plate-emoji { font-size: 7.5rem; filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.25)); }
+
+    .floating-card {
+      position: absolute;
+      padding: 13px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #073b47;
+      font-weight: 900;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .card-1 { top: 40px; left: 0; animation-delay: 0.5s; }
+    .card-2 { bottom: 85px; left: 22px; animation-delay: 1.2s; }
+    .card-3 { bottom: 24px; right: 18px; animation-delay: 0.8s; }
+
+    .wave { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 1; color: var(--bg); }
+    .wave svg { width: 100%; height: 100px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .section { padding: 84px 0; }
+    .section-head { text-align: center; max-width: 820px; margin: 0 auto 36px; }
+
+    .eyebrow { display: inline-block; padding: 8px 14px; border-radius: 999px; background: var(--surface-2); color: var(--brand); font-weight: 900; margin-bottom: 12px; }
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); color: var(--deep); margin-bottom: 12px; }
+    .section-head p { color: var(--muted); font-size: 1.02rem; }
+
+    .features-grid, .reviews-grid, .contact-grid { display: grid; gap: 18px; }
+    .features-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 26px 20px; transition: 0.3s; }
+    .card:hover { transform: translateY(-7px); border-color: var(--brand); }
+
+    .icon-box {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      background: var(--card-icon-bg);
+      border-radius: 18px;
+      margin-bottom: 16px;
+      color: var(--brand);
+    }
+
+    .card h3 { color: var(--deep); margin-bottom: 8px; }
+    .card p { color: var(--muted); }
+
+    .about-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 22px; align-items: stretch; }
+
+    .about-media {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(160deg, #053541, #0891b2 58%, #5cd6ea);
+      box-shadow: var(--shadow);
+    }
+
+    .about-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.2), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.14), transparent 18%);
+    }
+
+    .about-emoji { position: relative; z-index: 1; font-size: 6.5rem; filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.25)); }
+
+    .about-badge {
+      position: absolute;
+      z-index: 2;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #05303c;
+      padding: 13px 16px;
+      border-radius: 18px;
+      font-weight: 900;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    .about-content { background: var(--surface); border-radius: 32px; border: 1px solid var(--border); box-shadow: var(--shadow); padding: 34px; }
+    .about-content h3 { font-size: 1.7rem; color: var(--deep); margin-bottom: 14px; }
+    .about-content p { color: var(--muted); margin-bottom: 18px; }
+
+    .info-list { display: grid; gap: 13px; margin: 20px 0 24px; }
+
+    .info-list li {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 13px 14px;
+      border-radius: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+
+    .filter-btn {
+      border: 0;
+      background: var(--surface-2);
+      color: var(--ink);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: 0.3s;
+      border: 1px solid var(--border);
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      box-shadow: 0 12px 25px rgba(8, 145, 178, 0.25);
+      border-color: transparent;
+    }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+
+    .menu-item {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item:hover { transform: translateY(-7px); border-color: var(--brand); }
+
+    .badge-hot {
+      position: absolute;
+      top: 12px;
+      inset-inline-start: 12px;
+      z-index: 2;
+      background: linear-gradient(135deg, #ff6b6b, #e03131);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(224, 49, 49, 0.35);
+    }
+
+    .menu-thumb { min-height: 140px; display: grid; place-items: center; background: var(--menu-thumb); border-bottom: 1px solid var(--border); }
+    .thumb-emoji { font-size: 3.1rem; }
+
+    .menu-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .menu-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .menu-title-row h3 { color: var(--deep); font-size: 1.12rem; line-height: 1.4; }
+
+    .price {
+      background: linear-gradient(135deg, #ffd76a, var(--gold));
+      color: #3b2a00;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      box-shadow: 0 6px 14px rgba(255, 183, 3, 0.25);
+    }
+
+    .menu-body p { color: var(--muted); font-size: 0.95rem; flex: 1; }
+    .menu-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+
+    .tag { background: var(--surface-2); color: var(--brand); padding: 7px 11px; border-radius: 999px; font-size: 0.84rem; font-weight: 900; border: 1px solid var(--border); }
+
+    .order-btn {
+      border: 0;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 0.9rem;
+      box-shadow: 0 12px 24px rgba(10, 130, 152, 0.2);
+      transition: 0.3s;
+    }
+
+    .order-btn:hover { transform: translateY(-2px); }
+
+    .menu-note { text-align: center; margin-top: 26px; color: var(--muted); font-size: 0.95rem; font-weight: 700; }
+
+    .reviews-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .review-card { position: relative; padding-top: 26px; }
+
+    .review-card::before { content: "”"; position: absolute; top: 10px; left: 18px; font-size: 3.4rem; color: var(--border); line-height: 1; }
+
+    .stars { color: #f5b301; font-size: 1.1rem; margin-bottom: 12px; }
+    .review-card p { color: var(--muted); font-style: italic; margin-bottom: 16px; }
+    .reviewer { font-weight: 900; color: var(--deep); }
+
+    .contact-grid { grid-template-columns: 1fr 1.1fr; align-items: stretch; }
+    .contact-card { padding: 30px; }
+    .contact-card h3 { color: var(--deep); margin-bottom: 18px; }
+    .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+
+    .contact-icon { width: 46px; height: 46px; flex: 0 0 auto; display: grid; place-items: center; font-size: 1.2rem; background: var(--surface-2); border-radius: 14px; }
+    .contact-item strong { display: block; margin-bottom: 3px; color: var(--deep); }
+    .contact-item span { color: var(--muted); }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+    .map-box { min-height: 430px; border-radius: 30px; overflow: hidden; box-shadow: var(--shadow); }
+    .map-box iframe { width: 100%; height: 100%; min-height: 430px; border: 0; }
+
+    .cta { background: linear-gradient(135deg, #04272f, #0a7c94); color: #ffffff; text-align: center; padding: 70px 0; position: relative; overflow: hidden; }
+    .cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 24%); }
+    .cta .container { position: relative; z-index: 1; }
+    .cta h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-bottom: 12px; }
+    .cta p { color: #dffaff; max-width: 700px; margin: 0 auto 24px; }
+
+    footer { background: #03222b; color: #cdeef7; padding: 34px 0; }
+    .footer-content { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .footer-brand { font-size: 1.4rem; font-weight: 900; color: #ffffff; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; color: #b9e6f1; font-weight: 700; }
+    .footer-links a:hover { color: #ffffff; }
+    .copyright { color: #8fbecb; font-size: 0.95rem; }
+
+    .whatsapp-float, .back-top {
+      position: fixed;
+      z-index: 1100;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    .whatsapp-float { left: 18px; bottom: 18px; background: var(--whatsapp); color: #ffffff; }
+
+    .back-top { right: 18px; bottom: 18px; background: var(--brand); color: #ffffff; opacity: 0; visibility: hidden; transform: translateY(15px); border: 0; }
+    .back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; min-height: 360px; }
+      .about-media { min-height: 320px; }
+
+      .nav {
+        position: fixed;
+        inset: 80px 16px auto 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 18px;
+        display: grid;
+        gap: 14px;
+        box-shadow: 0 25px 50px rgba(3, 42, 55, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: 0.3s;
+        z-index: 1001;
+      }
+
+      .nav.open { opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav-toggle { display: block; }
+      .header-call { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 70px 0 110px; }
+      .hero-stats { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+      .stat { padding: 12px 8px; }
+      .floating-card { font-size: 0.9rem; padding: 10px 12px; }
+      .contact-actions .btn { width: 100%; }
+      .h1-emoji { font-size: 0.7em; }
+      .plate-emoji { font-size: 5.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    🐟 سمك طازج ومأكولات بحرية في سوهاج — اطلب الآن عبر واتساب
+  </div>
+
+  <header id="header">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand">
+        <span class="brand-icon">🐟</span>
+        توتي فيش
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#home">الرئيسية</a>
+        <a href="#features">مميزاتنا</a>
+        <a href="#about">عن المطعم</a>
+        <a href="#menu">المنيو</a>
+        <a href="#reviews">آراء العملاء</a>
+        <a href="#contact">اتصل بنا</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="التبديل بين الوضع الأسود والأبيض">
+          <span class="toggle-icon sun">☀️</span>
+          <span class="toggle-icon moon">🌙</span>
+          <span class="toggle-knob"></span>
+        </button>
+
+        <a href="tel:+201011838420" class="header-call">📞 اتصل الآن</a>
+        <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="chip">مطعم أسماك ومأكولات بحرية في سوهاج</span>
+
+          <h1>
+            توتي فيش
+            <span class="h1-emoji">🐟</span>
+          </h1>
+
+          <div class="slogan">طعم البحر كما يجب أن يكون</div>
+
+          <p class="lead">
+            في توتي فيش بنقدملك تجربة أكل بحري مميزة: سمك طازج، مشويات على أصولها،
+            فواكه بحر، وأطباق سي فود بطعم يفتح النفس.
+            لو بتدور على مكان يرضي ذوقك في السمك، إنت في المكان الصح.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-gold">🍽️ تصفح المنيو</a>
+            <a href="https://wa.me/201011838420" target="_blank" class="btn btn-whatsapp">💬 اطلب عبر واتساب</a>
+            <a href="tel:+201011838420" class="btn btn-ghost">📞 اتصال مباشر</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat"><strong>طازج</strong><span>يومياً</span></div>
+            <div class="stat"><strong>سي فود</strong><span>متنوع</span></div>
+            <div class="stat"><strong>طلبات</strong><span>سريعة</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="plate">
+            <span class="plate-emoji">🐟</span>
+          </div>
+          <div class="floating-card card-1">🦐 جمبري</div>
+          <div class="floating-card card-2">🦑 سيبيا</div>
+          <div class="floating-card card-3">🦀 كابوريا</div>
+        </div>
+      </div>
+
+      <div class="wave">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,64 C240,120 480,0 720,32 C960,64 1200,96 1440,64 L1440,120 L0,120 Z" fill="currentColor"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">ليه توتي فيش؟</span>
+          <h2>مميزات تخليك تجربنا</h2>
+          <p>بنهتم بالتفاصيل من أول اختيار السمك لحد ما يوصلك أو تاكله عندنا</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="card">
+            <div class="icon-box">🐟</div>
+            <h3>سمك طازج</h3>
+            <p>بنختار السمك بعناية عشان نضمنلك طعم طازج وجودة عالية.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">🔥</div>
+            <h3>مشويات مميزة</h3>
+            <p>تتبيلة مميزة وشوي على أصوله يخلي الطعم قوي ومختلف.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">🦐</div>
+            <h3>سي فود متنوع</h3>
+            <p>جمبري، سيبيا، كابوريا، فواكه بحر، وأطباق بحرية مختلفة.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">⚡</div>
+            <h3>طلب وتواصل سهل</h3>
+            <p>تقدر تطلب أو تستفسر بسهولة عن طريق الاتصال أو واتساب.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">عن المطعم</span>
+          <h2>توتي فيش... حكاية طعم بحري</h2>
+          <p>مكان متخصص لعشاق السمك والمأكولات البحرية</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-media">
+            <div class="about-emoji">🐟</div>
+            <div class="about-badge">توتي فيش - سوهاج</div>
+          </div>
+
+          <div class="about-content">
+            <h3>إحنا مين؟</h3>
+            <p>
+              توتي فيش هو مطعم أسماك ومأكولات بحرية في سوهاج، بنقدم أكلات بحرية
+              بطعم يخلي التجربة مختلفة. هدفنا إن كل عميل ياكل سمك طازج، متظبط،
+              ومقدم بشكل يرضيه.
+            </p>
+            <p>
+              سواء بتحبه مشوي، مقلي، أو بتحب السي فود وفواكه البحر، عندنا اختيار
+              يناسبك. وكل طبق بنعمله بنحاول يوصلك بنفس الجودة والطعم اللي يخليك ترجعلنا تاني.
+            </p>
+
+            <ul class="info-list">
+              <li>📍 العنوان: شارع مازن، أمام حلواني الأصيل، خلف النادي البحري - سوهاج</li>
+              <li>📞 الهاتف: <span dir="ltr">01011838420</span></li>
+              <li>📱 هاتف إضافي: <span dir="ltr">01080660694</span></li>
+              <li>🍽️ التخصص: أسماك ومأكولات بحرية</li>
+              <li>⭐ الشعار: طعم البحر كما يجب أن يكون</li>
+            </ul>
+
+            <a href="#menu" class="btn btn-gold">شوف المنيو</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">المنيو</span>
+          <h2>تفاصيل المنيو كاملة</h2>
+          <p>اختار القسم اللي يعجبك، واضغط "اطلب واتساب" على أي صنف</p>
+        </div>
+
+        <div class="filters" id="menuTabs"></div>
+        <div class="menu-grid" id="menuGrid"></div>
+
+        <p class="menu-note">
+          ⚖️ الأسعار من منيو توتي فيش — أصناف السمك الطازج سعرها حسب الوزن وسعر اليوم
+        </p>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">آراء العملاء</span>
+          <h2>الناس بتقول إيه؟</h2>
+          <p>يمكنك تعديل هذه الآراء لاحقاً بآراء حقيقية من العملاء</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="card review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"السمك طازة جداً والطعم ممتاز، خصوصاً المشوي. تجربة تستاهل تتعاد."</p>
+            <div class="reviewer">عميل من سوهاج</div>
+          </article>
+
+          <article class="card review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"من الأماكن القليلة اللي بتحس فيها بطعم السي فود بجد. التقديم حلو والطلب سهل."</p>
+            <div class="reviewer">عميل من سوهاج</div>
+          </article>
+
+          <article class="card review-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"لو بتحب السمك، توتي فيش مكان يستاهل التجربة. الجودة والاهتمام واضح."</p>
+            <div class="reviewer">عميل من سوهاج</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">تواصل معنا</span>
+          <h2>اطلب أو استفسر بسهولة</h2>
+          <p>إحنا موجودين في سوهاج، وتقدر تتواصل معانا للاتصال أو واتساب</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <h3>بيانات التواصل</h3>
+
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <strong>العنوان</strong>
+                <span>شارع مازن، أمام حلواني الأصيل، خلف النادي البحري - سوهاج</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <strong>الهاتف الأساسي</strong>
+                <span dir="ltr">01011838420</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📱</div>
+              <div>
+                <strong>هاتف إضافي</strong>
+                <span dir="ltr">01080660694</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">💬</div>
+              <div>
+                <strong>واتساب</strong>
+                <span>اضغط على زر واتساب وسيتم فتح محادثة مباشرة</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">🕒</div>
+              <div>
+                <strong>مواعيد العمل</strong>
+                <span>للاستفسار عن المواعيد الحالية، يفضل الاتصال قبل الطلب</span>
+              </div>
+            </div>
+
+            <div class="contact-actions">
+              <a href="tel:+201011838420" class="btn btn-gold">📞 اتصال مباشر</a>
+              <a href="https://wa.me/201011838420" target="_blank" class="btn btn-whatsapp">💬 واتساب</a>
+              <a href="https://www.google.com/maps?q=Totyfish%20Sohag%20Egypt" target="_blank" class="btn btn-line">🗺️ فتح الخريطة</a>
+            </div>
+          </div>
+
+          <div class="map-box">
+            <iframe
+              src="https://www.google.com/maps?q=Totyfish%20Sohag%20Egypt&output=embed"
+              loading="lazy"
+              title="موقع توتي فيش على خرائط جوجل">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2>جاهز تاكل سمك يفتح النفس؟</h2>
+        <p>
+          اطلب دلوقتي من توتي فيش واستمتع بطعم البحر كما يجب أن يكون.
+          تواصل معنا على واتساب أو اتصل بنا مباشرة.
+        </p>
+
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="https://wa.me/201011838420" target="_blank" class="btn btn-whatsapp">💬 اطلب عبر واتساب</a>
+          <a href="tel:+201011838420" class="btn btn-gold">📞 اتصل الآن</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">🐟 توتي فيش | Toty Fish</div>
+
+      <div class="footer-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#features">مميزاتنا</a>
+        <a href="#about">عن المطعم</a>
+        <a href="#menu">المنيو</a>
+        <a href="#contact">اتصل بنا</a>
+      </div>
+
+      <div class="copyright">© <span id="year"></span> توتي فيش - جميع الحقوق محفوظة</div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/201011838420" target="_blank" class="whatsapp-float" aria-label="تواصل عبر واتساب">💬</a>
+  <button class="back-top" id="backTop" aria-label="الرجوع للأعلى">↑</button>
+
+  <script>
+    /* ========== بيانات المنيو (من صور منيو توتي فيش) ========== */
+    const MENU_CATEGORIES = [
+      { id: "all",      label: "الكل" },
+      { id: "meals",    label: "وجبات السمك" },
+      { id: "kids",     label: "وجبات الأطفال" },
+      { id: "grilled",  label: "مشويات" },
+      { id: "fried",    label: "مقليات" },
+      { id: "seafood",  label: "سي فود" },
+      { id: "soups",    label: "الشوربات" },
+      { id: "rice",     label: "الأرز" },
+      { id: "specials", label: "أصناف خاصة" },
+      { id: "salads",   label: "سلطات ومقبلات" },
+      { id: "drinks",   label: "مشروبات" }
+    ];
+
+    const MENU_ITEMS = [
+      /* وجبات السمك */
+      { cat: "meals", icon: "🦐", name: "وجبة جمبري مشوي أو مقلي", desc: "وجبة كاملة بالجمبري المفضل ليك مشوي أو مقلي مع الأرز والسلطات.", price: "240 ج.م", tag: "الأكثر طلبًا" },
+      { cat: "meals", icon: "🐟", name: "وجبة فيليه سمك مشوي",     desc: "فيليه سمك مشوي خفيف وصحي مع أرز وسلطة طحينة.",                   price: "130 ج.م" },
+      { cat: "meals", icon: "🦑", name: "وجبة سيبيا مشوية",        desc: "سيبيا مشوية على الفحم مع أرز صيادية وسلطات.",                     price: "190 ج.م" },
+      { cat: "meals", icon: "🐟", name: "وجبة فيليه مقلي",         desc: "فيليه سمك مقلي مقرمش مع أرز وبطاطس وسلطات.",                      price: "160 ج.م" },
+
+      /* وجبات الأطفال */
+      { cat: "kids", icon: "🦐", name: "وجبة أطفال جمبري فراي",   desc: "جمبري فراي مقرمش بحجم مناسب للأطفال مع أرز وبطاطس.",              price: "140 ج.م", tag: "للأطفال" },
+      { cat: "kids", icon: "🦀", name: "وجبة أطفال أصابع كابوريا", desc: "أصابع كابوريا فراي مقرمشة يحبها الأطفال مع أرز بسيط.",            price: "140 ج.م" },
+      { cat: "kids", icon: "🐟", name: "وجبة أطفال فيليه مقلي",   desc: "فيليه سمك مقلي طري ومقرمش مع أرز وبطاطس مناسبة للأطفال.",          price: "160 ج.م" },
+
+      /* مشويات */
+      { cat: "grilled", icon: "🐟", name: "بوري مشوي",   desc: "سمك بوري طازج مشوي على الفحم بتتبيلة توتي فيش الخاصة.", price: "حسب الوزن", tag: "الأكثر طلبًا" },
+      { cat: "grilled", icon: "🐟", name: "دنيس مشوي",   desc: "دنيس طازج مشوي بتوابل بحرية خفيفة وعصرة ليمون.",         price: "حسب الوزن" },
+      { cat: "grilled", icon: "🐟", name: "قاروص مشوي",  desc: "قاروص فاخر مشوي على الفحم، طعم نظيف ومميز.",              price: "حسب الوزن", tag: "فاخر" },
+      { cat: "grilled", icon: "🐟", name: "بلطي مشوي",   desc: "بلطي بلدي مشوي بتتبيلة شعبية أصيلة تفتح النفس.",         price: "حسب الوزن" },
+      { cat: "grilled", icon: "🦑", name: "سيبيا مشوية", desc: "سيبيا طازجة مشوية على الفحم بلمسة ثوم وليمون.",           price: "حسب الوزن" },
+      { cat: "grilled", icon: "🦐", name: "جمبري مشوي",  desc: "جمبري مشوي بتتبيلة حارة خفيفة وطعم مدخن رائع.",          price: "حسب الوزن", tag: "مميز" },
+
+      /* مقليات */
+      { cat: "fried", icon: "🐟", name: "بلطي مقلي",    desc: "بلطي مقلي مقرمش من بره وطري من جوه بتتبيلة بلدية.",       price: "حسب الوزن" },
+      { cat: "fried", icon: "🐟", name: "بوري مقلي",    desc: "بوري مقلي ذهبي ومقرمش مع أرز صيادية وسلطة طحينة.",         price: "حسب الوزن" },
+      { cat: "fried", icon: "🦐", name: "جمبري مقلي",   desc: "جمبري مقلي مقرمش بتغليف خفيف ذهبي، طعم يدمن.",            price: "حسب الوزن" },
+      { cat: "fried", icon: "🦑", name: "سيبيا مقلية",  desc: "حلقات سيبيا مقلية مقرمشة مع صوص الثوم أو الطحينة.",        price: "حسب الوزن" },
+      { cat: "fried", icon: "🦀", name: "كابوريا مقلية",desc: "كابوريا مقلية متبلة، تجربة بحرية مميزة.",                  price: "حسب الوزن" },
+
+      /* سي فود */
+      { cat: "seafood", icon: "🦐", name: "جمبري بالثوم والزبدة",  desc: "جمبري مطهو على الطريقة الخاصة مع ثوم وزبدة وأعشاب.",   price: "حسب الوزن" },
+      { cat: "seafood", icon: "🦑", name: "سيبيا بالطحينة",        desc: "سيبيا مطهوة مع طحينة وبصل وتوابل، طبق بحري أصيل.",        price: "حسب الوزن" },
+      { cat: "seafood", icon: "🦀", name: "كابوريا بالصلصة",       desc: "كابوريا مطهوة في صلصة بحرية غنية بالطعم.",               price: "حسب الوزن" },
+      { cat: "seafood", icon: "🍤", name: "فواكه بحر مشكلة",       desc: "تشكيلة بحرية فاخرة: جمبري، سيبيا، كابوريا بصلصة سي فود.", price: "حسب الوزن", tag: "للعائلة" },
+      { cat: "seafood", icon: "🍲", name: "صينية سي فود بالفحم",   desc: "صينية بحرية كاملة على الفحم تكفي مجموعة.",               price: "حسب الوزن", tag: "الأكثر طلبًا" },
+
+      /* الشوربات */
+      { cat: "soups", icon: "🍲", name: "شوربة سي فود كريمي",  desc: "شوربة كريمي غنية بقطع السي فود والطعم البحري.",      price: "125 ج.م" },
+      { cat: "soups", icon: "🍲", name: "شوربة بالجمبري",      desc: "شوربة بحرية بقطع الجمبري الطازج والتوابل الدافئة.",   price: "125 ج.م" },
+      { cat: "soups", icon: "🍲", name: "شوربة جمبري",         desc: "شوربة جمبري مركزة بطعم غني وقوام مظبوط.",             price: "220 ج.م" },
+      { cat: "soups", icon: "🍲", name: "شوربة سي فود",        desc: "شوربة سي فود كلاسيكية بطعم بحري أصيل.",                price: "100 ج.م" },
+      { cat: "soups", icon: "🍲", name: "شوربة سي فود بالمحار",desc: "شوربة سي فود مضافة لها المحار لطعم أعمق وأفخم.",      price: "160 ج.م" },
+      { cat: "soups", icon: "🍲", name: "شوربة سي فود كبيرة",  desc: "حجم كبير من شوربة السي فود يكفي مجموعة.",             price: "150 ج.م" },
+
+      /* الأرز */
+      { cat: "rice", icon: "🍚", name: "أرز سي فود فاهيتا",  desc: "أرز مطهو على طريقة الفاهيتا مع تشكيلة سي فود.",        price: "170 ج.م" },
+      { cat: "rice", icon: "🍚", name: "أرز سيبيا فاهيتا",   desc: "أرز فاهيتا بقطع السيبيا المتبلة والطازجة.",             price: "190 ج.م" },
+      { cat: "rice", icon: "🍚", name: "أرز جمبري فاهيتا",   desc: "أرز فاهيتا بقطع الجمبري المتبل بطعم مدخن خفيف.",        price: "160 ج.م" },
+      { cat: "rice", icon: "🍚", name: "أرز سي فود",         desc: "أرز مطهو مع تشكيلة فواكه البحر والتوابل البحرية.",      price: "150 ج.م" },
+      { cat: "rice", icon: "🍚", name: "أرز صيادية",         desc: "أرز صيادية بني ذهبي بطعم بحري، الرفيق الرسمي للسمك.",   price: "170 ج.م" },
+
+      /* أصناف خاصة */
+      { cat: "specials", icon: "🍝", name: "مكرونة بالجمبري مخصوص",   desc: "وصفة توتي فيش الخاصة للمكرونة بالجمبري بصوص مميز.",     price: "250 ج.م", tag: "مخصوص" },
+      { cat: "specials", icon: "🍝", name: "مكرونة بالجمبري",         desc: "مكرونة مطهوة مع الجمبري الطازج وصوص بحري خفيف.",         price: "200 ج.م" },
+      { cat: "specials", icon: "🦐", name: "فيليه جمبري بالموزاريلا", desc: "فيليه محشو بالجمبري ومغطى بالموزاريلا الذايبة.",         price: "180 ج.م" },
+      { cat: "specials", icon: "🐟", name: "فيليه بصوص أحمر",         desc: "فيليه سمك مطهو في صوص أحمر غني بالطعم.",                 price: "160 ج.م" },
+      { cat: "specials", icon: "🍲", name: "طاجن سي فود صوص أبيض",    desc: "طاجن سي فود كريمي بصوص أبيض غني على الفحم.",              price: "250 ج.م" },
+      { cat: "specials", icon: "🍲", name: "طاجن سي فود صوص أحمر",    desc: "طاجن سي فود بصوص أحمر متبل بطعم قوي.",                    price: "230 ج.م" },
+      { cat: "specials", icon: "🍝", name: "مكرونة بالجمبري صوص أحمر", desc: "مكرونة بالجمبري في صوص أحمر بحري متبل.",                 price: "210 ج.م" },
+      { cat: "specials", icon: "🍝", name: "مكرونة بالجمبري صوص أبيض", desc: "مكرونة بالجمبري في صوص أبيض كريمي ناعم.",                price: "220 ج.م" },
+
+      /* سلطات ومقبلات */
+      { cat: "salads", icon: "🥗", name: "سلطة طحينة",  desc: "طحينة مظبوطة بالليمون والثوم، لا غنى عنها مع السمك.",  price: "25 ج.م" },
+      { cat: "salads", icon: "🥗", name: "سلطة خضراء",  desc: "خضروات طازجة مشكلة بلمسة ليمون وزيت زيتون.",            price: "30 ج.م" },
+      { cat: "salads", icon: "🥗", name: "سلطة سي فود", desc: "سلطة غنية بقطع السي فود والخضروات الطازجة.",            price: "65 ج.م" },
+      { cat: "salads", icon: "🍆", name: "بابا غنوج",   desc: "باذنجان مشوي مهروس بالطحينة والثوم، مقبل شرقي أصيل.",   price: "30 ج.م" },
+      { cat: "salads", icon: "🥣", name: "طرطور",       desc: "طرطور شرقي مظبوط يكمّل سفرة السمك بشكل مثالي.",         price: "25 ج.م" },
+
+      /* مشروبات */
+      { cat: "drinks", icon: "🍊", name: "عصير برتقال طبيعي", desc: "برتقال طازج معصور في الحال، منعش وصحي.",   price: "40 ج.م" },
+      { cat: "drinks", icon: "🥭", name: "عصير مانجو",        desc: "مانجو طبيعي مركز بطعم غني وقوام كريمي.",   price: "45 ج.م" },
+      { cat: "drinks", icon: "🥤", name: "مشروبات غازية",     desc: "مشروبات غازية مثلجة بكل الأنواع المتاحة.",  price: "20 ج.م" },
+      { cat: "drinks", icon: "💧", name: "مياه معدنية",       desc: "مياه معدنية مثلجة ومنعشة.",                  price: "10 ج.م" }
+    ];
+    /* ================================================================== */
+
+    const header = document.getElementById("header");
+    const nav = document.getElementById("nav");
+    const navToggle = document.getElementById("navToggle");
+    const backTop = document.getElementById("backTop");
+    const themeToggle = document.getElementById("themeToggle");
+    const menuTabs = document.getElementById("menuTabs");
+    const menuGrid = document.getElementById("menuGrid");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* تبديل أسود / أبيض */
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", current);
+      try { localStorage.setItem("toty-theme", current); } catch (e) {}
+    });
+
+    /* قائمة الموبايل */
+    navToggle.addEventListener("click", () => nav.classList.toggle("open"));
+    document.querySelectorAll(".nav a").forEach(link => {
+      link.addEventListener("click", () => nav.classList.remove("open"));
+    });
+
+    /* سكرول */
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+      backTop.classList.toggle("show", window.scrollY > 500);
+    });
+
+    backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    /* المنيو */
+    function catLabel(id) {
+      const c = MENU_CATEGORIES.find(c => c.id === id);
+      return c ? c.label : id;
+    }
+
+    function renderTabs(active) {
+      menuTabs.innerHTML = MENU_CATEGORIES.map(c =>
+        `<button class="filter-btn ${c.id === active ? "active" : ""}" data-cat="${c.id}">${c.label}</button>`
+      ).join("");
+    }
+
+    function cardHTML(item) {
+      const badge = item.tag ? `<span class="badge-hot">⭐ ${item.tag}</span>` : "";
+      return `
+        <article class="menu-item">
+          ${badge}
+          <div class="menu-thumb"><span class="thumb-emoji">${item.icon}</span></div>
+          <div class="menu-body">
+            <div class="menu-title-row">
+              <h3>${item.name}</h3>
+              <span class="price">${item.price}</span>
+            </div>
+            <p>${item.desc}</p>
+            <div class="menu-footer">
+              <span class="tag">${catLabel(item.cat)}</span>
+              <button class="order-btn" data-item="${item.name}">💬 اطلب واتساب</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderMenu(cat) {
+      const items = cat === "all" ? MENU_ITEMS : MENU_ITEMS.filter(i => i.cat === cat);
+      menuGrid.innerHTML = items.map(cardHTML).join("");
+    }
+
+    menuTabs.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter-btn");
+      if (!btn) return;
+      renderTabs(btn.dataset.cat);
+      renderMenu(btn.dataset.cat);
+    });
+
+    /* طلب واتساب */
+    function orderWhatsApp(itemName) {
+      const phone = "201011838420";
+      const message = `مرحباً توتي فيش 🐟\nأرغب في طلب: ${itemName}\nمن فضلك أكّد لي التوفر والسعر الحالي.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+    }
+
+    menuGrid.addEventListener("click", (e) => {
+      const btn = e.target.closest(".order-btn");
+      if (btn) orderWhatsApp(btn.dataset.item);
+    });
+
+    renderTabs("all");
+    renderMenu("all");
+  </script>
+</body>
+</html>
